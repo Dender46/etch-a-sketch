@@ -24,8 +24,10 @@ document.addEventListener('DOMContentLoaded', function(){
 
 	function handleUpdate() {
 		// preventing from weird values
-		if (inputs[2].value < 1) inputs[2].value = 1; 
-		if (inputs[2].value > 100) inputs[2].value = 100; 
+		if (inputs[2].value !== '') {
+			if (inputs[2].value < 1) inputs[2].value = 1; 
+			if (inputs[2].value > 100) inputs[2].value = 100; 
+		}
 
 		// changing CSS var and removing boxes to reate new ones
 		document.documentElement.style.setProperty(`--${this.name}`, this.value);
@@ -51,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	// changing grid everytime there is a new value in input
 	inputs[0].addEventListener('click', clearGrid);
 	inputs[2].addEventListener('change', handleUpdate);
-	// inputs[2].addEventListener('click', handleUpdate);
+	inputs[2].addEventListener('keyup', handleUpdate);
 
 	const colorWrapper = document.getElementById('color-wrapper');
 	colorWrapper.style.backgroundColor = inputs[1].value;
