@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	// changing grid everytime there is a new value in input
 	inputs[0].addEventListener('click', clearGrid);
 	inputs[2].addEventListener('change', handleUpdate);
-	inputs[2].addEventListener('click', handleUpdate);
+	// inputs[2].addEventListener('click', handleUpdate);
 
 	const colorWrapper = document.getElementById('color-wrapper');
 	colorWrapper.style.backgroundColor = inputs[1].value;
