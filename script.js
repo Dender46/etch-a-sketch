@@ -23,9 +23,11 @@ document.addEventListener('DOMContentLoaded', function(){
 		drawGrid(numberInput.value);
 		// after clearing to start working again
 		let boxes = document.querySelectorAll('.container *');
-		boxes.forEach(box => box.addEventListener('mouseover', changeColor));
-		boxes.forEach(box => box.addEventListener('mousedown', () => isDrawing = true));
-		boxes.forEach(box => box.addEventListener('mouseup', () => isDrawing = false));
+		boxes.forEach(box => {
+			box.addEventListener('mouseover', changeColor)
+			box.addEventListener('mousedown', () => isDrawing = true)
+			box.addEventListener('mouseup', () => isDrawing = false)
+		});
 	}
 
 	function handleUpdate() {
@@ -41,10 +43,12 @@ document.addEventListener('DOMContentLoaded', function(){
 		drawGrid(this.value);
 		
 		// after clearing to start working again
-		let boxes = document.querySelectorAll('.container *')
-		boxes.forEach(box => box.addEventListener('mouseover', changeColor));
-		boxes.forEach(box => box.addEventListener('mousedown', () => isDrawing = true));
-		boxes.forEach(box => box.addEventListener('mouseup', () => isDrawing = false));
+		let boxes = document.querySelectorAll('.container *');
+		boxes.forEach(box => {
+			box.addEventListener('mouseover', changeColor)
+			box.addEventListener('mousedown', () => isDrawing = true)
+			box.addEventListener('mouseup', () => isDrawing = false)
+		});
 	}
 	
 	let isDrawing = false;
@@ -66,9 +70,11 @@ document.addEventListener('DOMContentLoaded', function(){
 
 	// runs once for first drawn grid
 	let boxes = document.querySelectorAll('.container *');
-	boxes.forEach(box => box.addEventListener('mouseover', changeColor));
-	boxes.forEach(box => box.addEventListener('mousedown', () => isDrawing = true));
-	boxes.forEach(box => box.addEventListener('mouseup', () => isDrawing = false));
+	boxes.forEach(box => {
+		box.addEventListener('mouseover', changeColor)
+		box.addEventListener('mousedown', () => isDrawing = true)
+		box.addEventListener('mouseup', () => isDrawing = false)
+	});
 
 	// changing grid everytime there is a new value in input
 	resetInput.addEventListener('click', clearGrid);
