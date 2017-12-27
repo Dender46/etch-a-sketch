@@ -3,7 +3,9 @@ document.addEventListener('DOMContentLoaded', function(){
 	const resetInput = document.querySelector('#reset');
 	const colorInput = document.querySelector('#color');
 	const numberInput = document.querySelector('#number');
-	// to change cols value also change CSS variable 
+	const rainbowInput = document.querySelector('#rainbow');
+	
+	// IMPORTANT: to change default cols value also change CSS variable 
 	colorInput.value = "#333333";
 	numberInput.value = 32;
 
@@ -20,8 +22,10 @@ document.addEventListener('DOMContentLoaded', function(){
 		document.querySelectorAll('.container *').forEach(box => box.remove());
 		drawGrid(numberInput.value);
 		// after clearing to start working again
-		document.querySelectorAll('.container *').forEach(box => 
-			box.addEventListener('mouseover', changeColor));
+		let boxes = document.querySelectorAll('.container *');
+		boxes.forEach(box => box.addEventListener('mouseover', changeColor));
+		boxes.forEach(box => box.addEventListener('mousedown', () => isDrawing = true));
+		boxes.forEach(box => box.addEventListener('mouseup', () => isDrawing = false));
 	}
 
 	function handleUpdate() {
@@ -37,26 +41,34 @@ document.addEventListener('DOMContentLoaded', function(){
 		drawGrid(this.value);
 		
 		// after clearing to start working again
-		document.querySelectorAll('.container *').forEach(box => 
-		box.addEventListener('mouseover', changeColor));
+		let boxes = document.querySelectorAll('.container *')
+		boxes.forEach(box => box.addEventListener('mouseover', changeColor));
+		boxes.forEach(box => box.addEventListener('mousedown', () => isDrawing = true));
+		boxes.forEach(box => box.addEventListener('mouseup', () => isDrawing = false));
 	}
 	
 	let isDrawing = false;
+	let hslValue = 0;
 
 	// function to color tiles
 	function changeColor(event) {
 		// stop the function from running if mousebutton is up	
 		if (!isDrawing) return;
-		this.style.backgroundColor = colorInput.value;
+		if (rainbowInput.checked) {
+			this.style.backgroundColor = `hsl(${hslValue}, 100%, 60%)`;
+			hslValue = hslValue + 4;
+		} else {
+			this.style.backgroundColor = colorInput.value;
+		}
 	}
 	// initial drawing
 	drawGrid(numberInput.value);
 
 	// runs once for first drawn grid
 	let boxes = document.querySelectorAll('.container *');
+	boxes.forEach(box => box.addEventListener('mouseover', changeColor));
 	boxes.forEach(box => box.addEventListener('mousedown', () => isDrawing = true));
 	boxes.forEach(box => box.addEventListener('mouseup', () => isDrawing = false));
-	boxes.forEach(box => box.addEventListener('mouseover', changeColor));
 
 	// changing grid everytime there is a new value in input
 	resetInput.addEventListener('click', clearGrid);
