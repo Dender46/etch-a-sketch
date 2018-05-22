@@ -25,8 +25,10 @@ document.addEventListener('DOMContentLoaded', function(){
 		let boxes = document.querySelectorAll('.container *');
 		boxes.forEach(box => {
 			box.addEventListener('mouseover', changeColor)
-			box.addEventListener('mousedown', () => isDrawing = true)
-			box.addEventListener('mouseup', () => isDrawing = false)
+			box.addEventListener('mousedown',
+				(e) => {isDrawing = true; e.preventDefault(); })
+			box.addEventListener('mouseup',
+				(e) => {isDrawing = false; e.preventDefault(); })
 		});
 	}
 
@@ -46,8 +48,10 @@ document.addEventListener('DOMContentLoaded', function(){
 		let boxes = document.querySelectorAll('.container *');
 		boxes.forEach(box => {
 			box.addEventListener('mouseover', changeColor)
-			box.addEventListener('mousedown', () => isDrawing = true)
-			box.addEventListener('mouseup', () => isDrawing = false)
+			box.addEventListener('mousedown',
+				(e) => {isDrawing = true; e.preventDefault(); })
+			box.addEventListener('mouseup',
+				(e) => {isDrawing = false; e.preventDefault(); })
 		});
 	}
 	
@@ -72,8 +76,10 @@ document.addEventListener('DOMContentLoaded', function(){
 	let boxes = document.querySelectorAll('.container *');
 	boxes.forEach(box => {
 		box.addEventListener('mouseover', changeColor)
-		box.addEventListener('mousedown', () => isDrawing = true)
-		box.addEventListener('mouseup', () => isDrawing = false)
+		box.addEventListener('mousedown',
+			(e) => {isDrawing = true; e.preventDefault(); })
+		box.addEventListener('mouseup',
+			(e) => {isDrawing = false; e.preventDefault(); })
 	});
 
 	// changing grid everytime there is a new value in input
